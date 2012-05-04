@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 import Qt 4.7
 import "Controls"
 
@@ -22,7 +22,7 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenterOffset: -350
         anchors.verticalCenterOffset: -300
-        text: "Open *.chm"
+        text: "Unzip *.chm"
         onClicked: window.FunctionPIU()
 
     }
@@ -35,11 +35,13 @@ Rectangle {
         anchors.verticalCenterOffset: -300
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        text: "Get Files"
+        text: "Delete *.htm"
         onClicked:
-        {   var s = window.FunctionPIUPIU();
-            text1.text = s;
-                          }
+        window.FunctionPIUPIUPIU()
+
+
+
+
     }
 
 
@@ -51,14 +53,9 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenterOffset: -150
         anchors.verticalCenterOffset: -300
-        text: "Save"
-        onClicked:
-
-        {
+        text: "Save As"
+        onClicked:        
          window.savik(textEdit.text);
-            }
-
-
 
 
 
@@ -74,16 +71,16 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenterOffset: -50
         anchors.verticalCenterOffset: -300
-        text: "piu"
+        text: "Open *.htm"
         onClicked:
 
         {
             textEdit.text = window.FunctionMDE();
-        }
+               }
 
-            /*{
-            console.log("blablabla")
-        }*/
+
+
+
 
     }
 
@@ -91,8 +88,8 @@ Rectangle {
 
       GreyButton {
           id: mgreybutton5
-          x: 0
-          y: 0
+         // x: 0
+        //  y: 0
           anchors.horizontalCenter: parent.horizontalCenter
           anchors.verticalCenter: parent.verticalCenter
           anchors.horizontalCenterOffset: 50
@@ -101,8 +98,12 @@ Rectangle {
           onClicked:
           {
 
-              Qt.quit()
-}
+              window.close()
+          }
+
+
+
+
          }
 
 
@@ -323,16 +324,6 @@ Rectangle {
         model: RecipesModel {}
         delegate: recipeDelegate
     }
-}
-
-Text {
-    id: text1
-    x: 7
-    y: 462
-    width: 39
-    height: 21
-    text: qsTr("text")
-    font.pixelSize: 12
 }
 
 

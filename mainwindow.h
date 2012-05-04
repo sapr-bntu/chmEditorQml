@@ -28,7 +28,7 @@ public:
     Q_INVOKABLE QString FunctionMDE();    //open *.htm files
     Q_INVOKABLE QString load(const QString &f);
     Q_INVOKABLE void saveFile(const QString &fileName);  //save *.htm files
-    Q_INVOKABLE void savik();
+    Q_INVOKABLE void savik(const QString &piu1); //save
 
 private:
     QDeclarativeView *ui;
@@ -36,6 +36,8 @@ private:
 
 private:
 
+
+  QTextEdit *textEdit;
   //  QString load(const QString &f);
 };
 

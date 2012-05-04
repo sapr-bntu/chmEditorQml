@@ -11,10 +11,13 @@
 #include <QFileDialog>
 #include <QStringList>
 #include <QDeclarativeEngine>
+#include  <QDeclarativeView>
+#include <QTextCodec>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
+
     //Включаем наш QML
     ui = new QDeclarativeView;
     ui->setSource(QUrl("qrc:/main.qml"));
@@ -29,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->rootContext()->setContextProperty("window", this);
 
 
+ //textEdit = new QTextEdit(this);
 
     setWindowTitle(tr("Html  Editor By Vegas/Brandy/Swer/Veres/SL v1.1"));
 }
@@ -52,9 +56,6 @@ QString MainWindow::FunctionPIUPIU()
     QStringList piu ;
     piu<<"*.htm";
 
-  //  model->setNameFilters(piu);
- // model->setFilter(QDir::AllEntries  );
-//  model->setRootPath(dir);
 
     QDir piudir(dir);
     QStringList piulist;
@@ -70,7 +71,8 @@ void MainWindow::FunctionPIUPIUPIU()
 {
 
 
-    QString dir("D:/107528/piu(QML)+Button/");
+   // QString dir("D:/107528/piu(QML)+Button/");
+    QString dir("C:/piu(QML)+Button/");
 
 
     QStringList piu ;
@@ -166,6 +168,7 @@ void MainWindow::saveFile(const QString &fileName)
          QTextStream out(&file);
          QApplication::setOverrideCursor(Qt::WaitCursor);
        //  out <<ui->textEdit->toHtml();
+         out <<ui->window();
          QApplication::restoreOverrideCursor();
 
                 statusBar()->showMessage(tr("File saved"), 2000);
@@ -173,15 +176,36 @@ void MainWindow::saveFile(const QString &fileName)
 
 }
 
-void MainWindow::savik()
+void MainWindow::savik(const QString &piu1)
 {
-
+    qDebug()<<"piu1";
  //save po viboru
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save"), "", tr("Htm files (*.htm )"));
         if (fileName.isEmpty())
             return;
+qDebug()<<piu1;
+QFile file(fileName);
 
-        saveFile(fileName);
+
+     if (!file.open(QFile::WriteOnly | QFile::Text)) {
+         QMessageBox::warning(this, tr("Recent Files"),
+                              tr("Cannot write file %1:\n%2.")
+                              .arg(fileName)
+                              .arg(file.errorString()));
+         return;
+     }
+
+
+
+     QTextStream out(&file);
+     QApplication::setOverrideCursor(Qt::WaitCursor);
+   //  out <<ui->textEdit->toHtml();
+     out <<piu1;
+     QApplication::restoreOverrideCursor();
+
+            statusBar()->showMessage(tr("File saved"), 2000);
+
+
 }
 
 

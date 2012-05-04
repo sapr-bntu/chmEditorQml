@@ -22,7 +22,7 @@ ListModel {
         method: "* Хоружий П."
     }
     ListElement {
-        title: "Brandy(ProBroodMother)"
+        title: "Brandy"
         picture: "pics/lol3.jpg"
         ingredients: "<html>
                        <ul>
